@@ -12,6 +12,8 @@ const CombinedSummarizer = ({ inputText }) => {
         apiKey: import.meta.env.VITE_OPEN_AI_KEY, // Replace with your OpenAI API key
       });
       const openai = new OpenAIApi(configuration);
+      
+      delete configuration.baseOptions.headers['User-Agent'];
 
       const chatCompletion = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
